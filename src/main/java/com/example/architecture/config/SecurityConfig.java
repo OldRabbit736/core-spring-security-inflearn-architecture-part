@@ -28,9 +28,10 @@ public class SecurityConfig {
      */
     @Bean
     SecurityFilterChain chain2(HttpSecurity http) throws Exception {
+        // 모든 url 패턴에 대해서 matching 된다. antMatcher 를 설정하지 않았기 때문이다.
         http
                 .authorizeRequests()
-                .antMatchers("/abc/**").authenticated()
+                .anyRequest().authenticated()
                 .and()
                 .formLogin();
 
